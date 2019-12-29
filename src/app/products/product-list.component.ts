@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 import { IProduct } from "./product";
 import { ProductService } from "./product.service";
+import { Location } from "@angular/common";
 
 @Component({
   templateUrl: "./product-list.component.html",
@@ -15,7 +16,7 @@ export class ProductListComponent implements OnInit {
   errorMessage: string;
   filmsData;
   filteredMovies;
-  
+
   _movieSearched;
   _listFilter: string;
   get listFilter(): string {
@@ -33,15 +34,17 @@ export class ProductListComponent implements OnInit {
   }
   set movieSearched(value: string) {
     this._movieSearched = value;
-  
-      this.performSearch(this.movieSearched);
- 
+
+    this.performSearch(this.movieSearched);
   }
 
   filteredProducts: IProduct[];
   products: IProduct[] = [];
 
-  constructor(private _productService: ProductService) {}
+  constructor(
+    private _productService: ProductService,
+    private location: Location
+  ) {}
 
   /*  onRatingClicked(message: string): void {
         this.pageTitle = 'Product List: ' + message;
@@ -49,15 +52,15 @@ export class ProductListComponent implements OnInit {
 
   performSearch(dataSearched: string) {
     dataSearched = dataSearched.toLocaleLowerCase();
-        this._productService.getFilmsData1(dataSearched).subscribe(
-            moviesData => {
-              this.filteredMovies  = moviesData.Search;
-             // this.filteredMovies = this.filmsData;
-            },
-            error => (this.errorMessage = <any>error)
-          );
+    this._productService.getFilmsData1(dataSearched).subscribe(
+      moviesData => {
+        this.filteredMovies = moviesData.Search;
+        this.location.replaceState("/searched/" + this.movieSearched);
+        // this.filteredMovies = this.filmsData;
+      },
+      error => (this.errorMessage = <any>error)
+    );
   }
-     
 
   performFilter(filterBy: string) {
     filterBy = filterBy.toLocaleLowerCase();
