@@ -1,32 +1,64 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
-import { Observable, throwError } from 'rxjs';
-import { map, tap, catchError } from 'rxjs/operators';
+import { Observable, throwError } from "rxjs";
+import { map, tap, catchError } from "rxjs/operators";
 
-import { IProduct } from './product';
+import { IProduct } from "./product";
 
 @Injectable()
 export class ProductService {
-  private _productUrl = './api/products/products.json';
+  private _productUrl = "./api/products/products.json";
+  private url = "http://www.omdbapi.com/?apikey=f79aeba3&s=People";
+  private urlSearch = "http://www.omdbapi.com/?apikey=f79aeba3&s=";
+  private urlMovieDetal = "http://www.omdbapi.com/?apikey=f79aeba3&i=";
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient) {}
+
+  public getFilmsData(): Observable<any>  {
+    return this._http.get(this.url).pipe(
+      tap(data => console.log("film: " + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  public getFilmsData1(dataSearched): Observable<any>  {
+    return this._http.get(this.urlSearch + dataSearched).pipe(
+      tap(data => console.log("film: " + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
 
   getProducts(): Observable<IProduct[]> {
     return this._http.get<IProduct[]>(this._productUrl).pipe(
-      tap(data => console.log('All: ' + JSON.stringify(data))),
-      catchError(this.handleError), );
+     // tap(data => console.log("All: " + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  queryDetail(id): Observable<any> {
+    return this._http.get(this.urlMovieDetal  + id).pipe(
+      tap(data => console.log("queryDetail: " + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  getMovieDetail(id: string): Observable<any> {
+    return this.queryDetail(id).pipe(
+      map((products) => products))
+    ;
   }
 
   getProduct(id: number): Observable<IProduct> {
     return this.getProducts().pipe(
-      map((products: IProduct[]) => products.find(p => p.productId === id)));
+      map((products: IProduct[]) => products.find(p => p.productId === id))
+    );
   }
 
   private handleError(err) {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console
-    let errorMessage = '';
+    let errorMessage = "";
     if (err.error instanceof Error) {
       // A client-side or network error occurred. Handle it accordingly.
       errorMessage = `An error occurred: ${err.error.message}`;

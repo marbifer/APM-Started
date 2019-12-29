@@ -3,15 +3,21 @@
         {{pageTitle}}
     </div>
     <div class='panel-body'>
-        <div class='row'>
+            <div class='row'>
+                    <div class='col-md-2'>Search movies:</div>
+                    <div class='col-md-4'>
+                        <input type='text' [(ngModel)]='movieSearched' />
+                    </div>
+                </div>
+      <!--   <div class='row'>
             <div class='col-md-2'>Filter by:</div>
             <div class='col-md-4'>
                 <input type='text' [(ngModel)]='listFilter' />
             </div>
-        </div>
+        </div> -->
         <div class='row'>
             <div class='col-md-6'>
-                <h3>Filtered by: {{listFilter}} </h3>
+                <h3>Filtered by: {{movieSearched}} </h3>
             </div>
         </div>
         <div class='table-responsive'>
@@ -19,21 +25,16 @@
                     *ngIf='products && products.length'>
                 <thead>
                     <tr>
-                        <th>
-                            <button class='btn btn-primary'
-                                (click)='toggleImage()'>
-                                {{showImage ? 'Hide' : 'Show'}} Image
-                            </button>
-                        </th>
-                        <th>Product</th>
-                        <th>Code</th>
-                        <th>Available</th>
-                        <th>Price</th>
-                        <th>5 Star Rating</th>
+                        <th>Poster</th>
+                        <th>Title</th>
+                        <th>Year</th>
+                        <th>Type</th>
+                       
+                      
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor='let product of filteredProducts'>
+                   <!--  <tr *ngFor='let product of filteredProducts'>
                         <td>
                             <img *ngIf='showImage'
                                 [src]='product.imageUrl'
@@ -52,6 +53,31 @@
                             <pm-star [rating]='product.starRating'
                                 (ratingClicked)='onRatingClicked($event)'>
 							</pm-star>
+                        </td>
+                    </tr> -->
+                
+                    <tr *ngFor='let movies of filteredMovies'>
+                        <!--  -->
+                        <td>
+                            <img
+                               [src]='movies.Poster'
+                               [title]='movies.Title'
+                               [style.width.px]='imageWidth'
+                               [style.margin.px]='imageMargin'> 
+                       </td>
+                        <td><a [routerLink]="['/products', movies.imdbID]">
+                                {{ movies.Title }}
+                            </a>
+						</td>
+                        <td>{{ movies.Year }}</td>
+                        <td>{{ movies.Type }}</td>
+                       
+                      
+
+                        <td>
+                           <!--  <pm-star [rating]='movies.starRating'
+                                (ratingClicked)='onRatingClicked($event)'>
+							</pm-star> -->
                         </td>
                     </tr>
                 </tbody>
