@@ -10,8 +10,8 @@ import { SharedModule } from './../shared/shared.module';
 @NgModule({
   imports: [
     RouterModule.forChild([
-        { path: 'products', component: ProductListComponent },
-        { path: 'products/:id',
+        { path: 'movies', component: ProductListComponent },
+        { path: 'movies/:id/:searched',
           canActivate: [ ProductGuardService ],
           component: ProductDetailComponent }
     ]),

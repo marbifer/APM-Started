@@ -12,6 +12,7 @@ export class ProductDetailComponent implements OnInit {
   pageTitle: string = "Movie Detail";
   errorMessage: string;
   product: IProduct;
+  searched;
   movie;
 
   constructor(
@@ -22,7 +23,8 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit() {
     const param = this._route.snapshot.paramMap.get("id");
-    console.log("id: ", param);
+    this.searched = this._route.snapshot.paramMap.get("searched");
+    console.log("this.searched: ", this.searched);
     if (param) {
       //const id = +param;
       const id = param;
@@ -38,6 +40,6 @@ export class ProductDetailComponent implements OnInit {
   }
 
   onBack(): void {
-    this._router.navigate(["/products"]);
+    this._router.navigate(["/movies"], { queryParams: { searched: this.searched } });
   }
 }

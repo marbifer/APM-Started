@@ -60,12 +60,16 @@
                         <!--  -->
                         <td>
                             <img
+                            *ngIf="movies.Poster"
                                [src]='movies.Poster'
                                [title]='movies.Title'
                                [style.width.px]='imageWidth'
                                [style.margin.px]='imageMargin'> 
+                             <p
+                             *ngIf="!movies.Poster"
+                               > no image </p>
                        </td>
-                        <td><a [routerLink]="['/products', movies.imdbID]">
+                        <td><a [routerLink]="['/movies', movies.imdbID, movieSearched]" >
                                 {{ movies.Title }}
                             </a>
 						</td>

@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { IProduct } from "./product";
 import { ProductService } from "./product.service";
 import { Location } from "@angular/common";
+import { Router, ActivatedRoute, Params } from "@angular/router";
 
 @Component({
   templateUrl: "./product-list.component.html",
@@ -43,7 +44,9 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private _productService: ProductService,
-    private location: Location
+    private location: Location,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   /*  onRatingClicked(message: string): void {
@@ -55,7 +58,20 @@ export class ProductListComponent implements OnInit {
     this._productService.getFilmsData1(dataSearched).subscribe(
       moviesData => {
         this.filteredMovies = moviesData.Search;
-        this.location.replaceState("/searched/" + this.movieSearched);
+       // this.location.replaceState("/searched/" + this.movieSearched);
+
+
+        const queryParams: Params = { searched: this.movieSearched };
+
+  this.router.navigate(
+    [], 
+    {
+      relativeTo: this.activatedRoute,
+      queryParams: queryParams, 
+      queryParamsHandling: 'merge', // remove to replace all query params by provided
+    });
+
+
         // this.filteredMovies = this.filmsData;
       },
       error => (this.errorMessage = <any>error)
@@ -75,14 +91,25 @@ export class ProductListComponent implements OnInit {
   } */
 
   ngOnInit(): void {
-    this._productService.getFilmsData().subscribe(
+
+    this.activatedRoute.queryParams.subscribe((params: any) => {
+      if(params.searched){
+        console.log('params,', params)
+        this.movieSearched = params.searched;
+      }
+      
+  });
+
+    
+
+    /* this._productService.getFilmsData().subscribe(
       moviesData => {
         this.filmsData = moviesData.Search;
         this.filteredMovies = this.filmsData;
       },
       error => (this.errorMessage = <any>error)
     );
-
+ */
     this._productService.getProducts().subscribe(
       products => {
         this.products = products;
