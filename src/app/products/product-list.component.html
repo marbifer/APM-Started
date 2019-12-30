@@ -15,11 +15,11 @@
                 <input type='text' [(ngModel)]='listFilter' />
             </div>
         </div> -->
-        <div class='row'>
-            <div class='col-md-6'>
+
+            <div class="d-flex justify-content-start">
                 <h3>Filtered by: {{movieSearched}} </h3>
             </div>
-        </div>
+
         <div class='table-responsive'>
             <table class='table'
                     *ngIf='products && products.length'>
