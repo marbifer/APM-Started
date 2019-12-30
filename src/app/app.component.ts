@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     pageTitle: string = 'Movies Application';
+
+    public menu = {
+        items: [
+            {
+                title: "Welcome",
+                link: "/welcome"
+            },
+            {
+                title: "Movies List",
+                link: "/movies-list"
+            }
+        ]
+    };
 }

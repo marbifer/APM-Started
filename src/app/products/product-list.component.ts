@@ -11,7 +11,7 @@ import { Router, ActivatedRoute, Params } from "@angular/router";
 })
 export class ProductListComponent implements OnInit {
   pageTitle: string = "Movies List";
-  imageWidth: number = 50;
+  imageWidth: number = 200;
   imageMargin: number = 2;
   showImage: boolean = false;
   errorMessage: string;

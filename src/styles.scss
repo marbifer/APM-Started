@@ -1,8 +1,86 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootswatch/dist/solar/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/solar/bootswatch";
+
+body {
+  padding: 0;
+  color: #839496 !important;
+  background: #8e0e00; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #1f1c18,
+    #8e0e00
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #1f1c18,
+    #8e0e00
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* Navbar Styles */
+.my-nav {
+  filter: alpha(opacity=50);
+  background: rgba(255, 0, 0, 0.5);
+  position: fixed;
+  z-index: 999;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  transition: 300ms;
+  -o-transition: 300ms;
+  -webkit-transition: 300ms;
+  -moz-transition: 300ms;
+  padding: 10px 50px !important;
+  opacity: 0.5;
+  color: rgba(255, 255, 255, 0.5);
+}
+
 li {
-    font-size: large;
+  font-size: large;
 }
 
 div.panel-heading {
-   font-size: x-large;
+  font-size: x-large;
+}
+
+/* Styles Movies List */
+.my-badge-warning {
+  background: #cb4b16;
+}
+.my-text-warning {
+  color: #d33682;
+}
+
+// Anidar
+.test {
+  text-decoration: none !important;
+}
+
+.title {
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  border-bottom: 3px solid #e12b5f;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  width: 57px;
+}
+
+.year-type {
+  @extend .title;
+  font-weight: 700;
+  width: 38px;
+  border-bottom: none;
+}
+
+.text-title {
+  font-size: 0.9rem;
+}
+
+.text-title:hover {
+  color: #ff90af;
+  font-weight: 700;
+}
+
+.my-image {
+  height: 44vh;
 }

@@ -1,94 +1,104 @@
 <div class='panel panel-primary'>
-    <div class='panel-heading'>
-        {{pageTitle}}
+    <div class='panel-heading my-4 my-text-warning'>
+      <h3>{{ pageTitle }}</h3>
     </div>
     <div class='panel-body'>
-            <div class='row'>
-                    <div class='col-md-2'>Search movies:</div>
-                    <div class='col-md-4'>
-                        <input type='text' [(ngModel)]='movieSearched' />
-                    </div>
-                </div>
-      <!--   <div class='row'>
-            <div class='col-md-2'>Filter by:</div>
-            <div class='col-md-4'>
-                <input type='text' [(ngModel)]='listFilter' />
-            </div>
-        </div> -->
-
-            <div class="d-flex justify-content-start">
-                <h3>Filtered by: {{movieSearched}} </h3>
-            </div>
-
-        <div class='table-responsive'>
-            <table class='table'
-                    *ngIf='products && products.length'>
-                <thead>
-                    <tr>
-                        <th>Poster</th>
-                        <th>Title</th>
-                        <th>Year</th>
-                        <th>Type</th>
-                       
-                      
-                    </tr>
-                </thead>
-                <tbody>
-                   <!--  <tr *ngFor='let product of filteredProducts'>
-                        <td>
-                            <img *ngIf='showImage'
-                                [src]='product.imageUrl'
-                                [title]='product.productName'
-                                [style.width.px]='imageWidth'
-                                [style.margin.px]='imageMargin'>
-                        </td>
-                        <td><a [routerLink]="['/products', product.productId]">
-                                {{ product.productName }}
-                            </a>
-						</td>
-                        <td>{{ product.productCode | lowercase | convertToSpaces: '-' }}</td>
-                        <td>{{ product.releaseDate }}</td>
-                        <td>{{ product.price | currency:'USD':'symbol':'1.2-2'}}</td>
-                        <td>
-                            <pm-star [rating]='product.starRating'
-                                (ratingClicked)='onRatingClicked($event)'>
-							</pm-star>
-                        </td>
-                    </tr> -->
-                
-                    <tr *ngFor='let movies of filteredMovies'>
-                        <!--  -->
-                        <td>
-                            <img
-                            *ngIf="movies.Poster"
-                               [src]='movies.Poster'
-                               [title]='movies.Title'
-                               [style.width.px]='imageWidth'
-                               [style.margin.px]='imageMargin'> 
-                             <p
-                             *ngIf="!movies.Poster"
-                               > no image </p>
-                       </td>
-                        <td><a [routerLink]="['/movies', movies.imdbID, movieSearched]" >
-                                {{ movies.Title }}
-                            </a>
-						</td>
-                        <td>{{ movies.Year }}</td>
-                        <td>{{ movies.Type }}</td>
-                       
-                      
-
-                        <td>
-                           <!--  <pm-star [rating]='movies.starRating'
-                                (ratingClicked)='onRatingClicked($event)'>
-							</pm-star> -->
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+      <div class="w-100 d-flex justify-content-between align-items-start mb-4">
+        <span class="badge my-badge-warning text-white align-items-center p-2">
+          Filtered by: {{ movieSearched }}
+        </span>
+  
+        <div class='w-25 d-flex flex-row'>
+          <input type="text" class="form-control" id="movies" aria-describedby="movieshelp" placeholder="Search movies"
+            [(ngModel)]='movieSearched'>
         </div>
+      </div>
+  
+      <!-- List Movies -->
+      <div class="w-100 d-flex flex-row justify-content-between flex-wrap" *ngIf='products && products.length'>
+        <div class="d-flex flex-column mb-5" *ngFor='let movies of filteredMovies'>
+
+          <a class="text-white test" [routerLink]="['/movies', movies.imdbID, movieSearched]">
+            <span class="title text-white">Title</span>
+            <p class="text-title mt-2">{{ movies.Title }}</p>
+          </a>
+
+          <div class="my-image">
+            <img *ngIf="movies.Poster" [src]='movies.Poster' [title]='movies.Title' [style.width.px]='imageWidth'
+              [style.margin.px]='imageMargin'>
+            <p *ngIf="!movies.Poster"> no image </p>
+          </div>
+
+          <div class="d-flex flex-row align-items-center text-white">
+            <span class="year-type mr-2">Year:</span>
+            {{ movies.Year }}
+          </div>
+          
+          <div class="d-flex flex-row align-items-center text-white">
+            <span class="year-type mr-2">Type:</span>
+            {{ movies.Type }}
+          </div>
+          <!--  <pm-star [rating]='movies.starRating' (ratingClicked)='onRatingClicked($event)'>
+          </pm-star> -->
+        </div>
+      </div>
+  
+    <!--     <table class="table table-hover table-dark text-secondary" *ngIf='products && products.length'>
+          <thead class="text-white">
+            <tr>
+              <th>Poster</th>
+              <th>Title</th>
+              <th>Year</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody> -->
+            <!--  <tr *ngFor='let product of filteredProducts'>
+                          <td>
+                              <img *ngIf='showImage'
+                                  [src]='product.imageUrl'
+                                  [title]='product.productName'
+                                  [style.width.px]='imageWidth'
+                                  [style.margin.px]='imageMargin'>
+                          </td>
+                          <td><a [routerLink]="['/products', product.productId]">
+                                  {{ product.productName }}
+                              </a>
+                          </td>
+                          <td>{{ product.productCode | lowercase | convertToSpaces: '-' }}</td>
+                          <td>{{ product.releaseDate }}</td>
+                          <td>{{ product.price | currency:'USD':'symbol':'1.2-2'}}</td>
+                          <td>
+                              <pm-star [rating]='product.starRating'
+                                  (ratingClicked)='onRatingClicked($event)'>
+                              </pm-star>
+                          </td>
+                      </tr> -->
+  
+          <!--   <tr *ngFor='let movies of filteredMovies'>
+              <!--  -->
+             <!--  <td>
+                <img *ngIf="movies.Poster" [src]='movies.Poster' [title]='movies.Title' [style.width.px]='imageWidth'
+                  [style.margin.px]='imageMargin'>
+                <p *ngIf="!movies.Poster"> no image </p>
+              </td>
+              <td><a class="text-white" [routerLink]="['/movies', movies.imdbID, movieSearched]">
+                  {{ movies.Title }}
+                </a>
+              </td>
+              <td>{{ movies.Year }}</td>
+              <td>{{ movies.Type }}</td>
+              <td> -->
+                <!--  <pm-star [rating]='movies.starRating'
+                                  (ratingClicked)='onRatingClicked($event)'>
+                              </pm-star> -->
+            <!--   </td>
+            </tr>
+          </tbody>
+        </table> -->
     </div>
-</div>
-<div *ngIf='errorMessage' class='alert alert-danger'>
+  </div>
+  <div *ngIf='errorMessage' class='alert alert-danger'>
     Error: {{ errorMessage }}
-</div>
+  </div>
+  

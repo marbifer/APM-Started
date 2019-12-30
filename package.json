@@ -24,6 +24,7 @@
     "@angular/router": "^8.2.14",
     "@ng-bootstrap/ng-bootstrap": "^5.1.4",
     "bootstrap": "^4.4.1",
+    "bootswatch": "^4.4.1",
     "core-js": "^2.6.11",
     "rxjs": "^6.5.4",
     "sass": "^1.24.0",
