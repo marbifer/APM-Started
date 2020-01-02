@@ -47,9 +47,9 @@ export class ProductListComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {}
 
-  /*  onRatingClicked(message: string): void {
+   onRatingClicked(message: string): void {
         this.pageTitle = 'Product List: ' + message;
-    } */
+    }
 
   performSearch(dataSearched: string) {
     dataSearched = dataSearched.toLocaleLowerCase();

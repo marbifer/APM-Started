@@ -34,17 +34,19 @@
           <p *ngIf="!movies.Poster">no image</p>
         </div>
 
-        <div class="d-flex flex-row align-items-center text-white">
-          <span class="year-type mr-2">Year:</span>
-          {{ movies.Year }}
+        <div class="d-flex flex-column justify-content-start text-white mt-3">
+          <div class="d-flex flex-row align-items-center text-white">
+            <span class="year-type mt-1 mr-3">Year:</span>
+            {{ movies.Year }}
+          </div>
+  
+          <div class="d-flex flex-row align-items-center text-white">
+            <span class="year-type mt-1 mr-3">Type:</span>
+            {{ movies.Type }}
+          </div>
         </div>
 
-        <div class="d-flex flex-row align-items-center text-white">
-          <span class="year-type mr-2">Type:</span>
-          {{ movies.Type }}
-        </div>
-        <!--  <pm-star [rating]='movies.starRating' (ratingClicked)='onRatingClicked($event)'>
-          </pm-star> -->
+         <pm-star [rating]='movies.starRating' (ratingClicked)='onRatingClicked($event)'></pm-star>
       </div>
     </div>
   </div>

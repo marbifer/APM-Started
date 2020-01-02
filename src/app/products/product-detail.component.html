@@ -1,59 +1,104 @@
-<div class='panel panel-primary' *ngIf='movie'>
-  <!--   <div class='panel-heading'>
-        {{pageTitle + ': ' + movie.Title}}
-    </div> -->
+<div class="card bg-card mt-5" *ngIf='movie'>
+  <div class="card-header ng-header text-white">
+   <h2> Title: {{ movie.Title }}</h2>
+  </div>
 
-    <div class='card panel-body'>
-        <div class='row'>
-            <div class='col-md-6'>
-                <div class='row'>
-                    <div class='col-md-3'>Title:</div>
-                    <div class='col-md-6'>{{movie.Title}}</div>
-                </div>
-                <div class='row'>
-                    <div class='col-md-3'>Year:</div>
-                    <div class='col-md-6'>{{movie.Year }}</div>
-                </div>
-                <div class='row'>
-                    <div class='col-md-3'>Type:</div>
-                    <div class='col-md-6'>{{movie.Type}}</div>
-                </div>
-                <div class='row'>
-                    <div class='col-md-3'>Plot:</div>
-                    <div class='col-md-6'>{{movie.Plot}}</div>
-                </div>
-                <div class='row'>
-                    <div class='col-md-3'>IMDB rating:</div>
-                    <div class='col-md-6'>
-                        {{movie.imdbRating}}
-                        <pm-star [rating]='movie.imdbRating'>
-                        </pm-star>
-                    </div>
-                </div>
-                <div class='row'>
-                    <div class='col-md-3'>Runtime:</div>
-                    <div class='col-md-6'>{{movie.Runtime}}</div>
-                </div>
-                <div class='row'>
-                    <div class='col-md-3'>Genre:</div>
-                    <div class='col-md-6'>{{movie.Genre}}</div>
-                </div>
-                
-            </div>
+  <div class="card-body ng-body">
 
-            <div class='col-md-6'>
-                <img class='center-block img-responsive' 
-                     [style.width.px]='200' 
-                     [style.margin.px]='2' 
-                     [src]='movie.Poster'
-                     [title]='movie.Title'>
-            </div>
+    <div class="d-flex flex-row">
+      <div class="w-75 mr-1">
+        <h5 class="year-color card-title d-flex align-items-center">
+          <span class="mr-2">Year:</span>
+          <span class=""> {{ movie.Year }}</span>
+        </h5>
+
+        <h5 class="card-title">
+          Type: {{ movie.Type }}
+        </h5>
+
+        <blockquote class="blockquote">
+           <cite title="Source Title">Plot: {{ movie.Plot }}</cite>
+        </blockquote>
+
+        <div class="ng-pink">
+          IMDB rating: {{ movie.imdbRating }}
+          <pm-star [rating]='movie.imdbRating'></pm-star>
         </div>
+
+        <div class='ng-run'>
+          Runtime: {{ movie.Runtime }}
+        </div>
+
+        <div class='ng-text'>
+          Genre: {{ movie.Genre }}
+        </div>
+      </div>
+
+      <div class="w-25">
+        <div class='detail-image'>
+          <img class='center-block img-responsive' [src]='movie.Poster'
+            [title]='movie.Title'>
+        </div>
+      </div>
     </div>
 
-    <div class='panel-footer'>
-        <a class='btn btn-default' (click)='onBack()' style='width:80px'>
-            <i class='glyphicon glyphicon-chevron-left'></i> Back
-        </a>
-    </div>
+    <button type="button" class="btn btn-outline-warning ng-button" (click)='onBack()'>Back</button>
+  </div>
 </div>
+
+<!-- <div class='panel panel-primary' *ngIf='movie'>
+  <div class='panel-heading'>
+    {{pageTitle + ': ' + movie.Title}}
+  </div>
+
+  <div class='card panel-body'>
+    <div class='row'>
+      <div class='col-md-6'>
+        <div class='row'>
+          <div class='col-md-3'>Title:</div>
+          <div class='col-md-6'>{{movie.Title}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-3'>Year:</div>
+          <div class='col-md-6'>{{movie.Year }}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-3'>Type:</div>
+          <div class='col-md-6'>{{movie.Type}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-3'>Plot:</div>
+          <div class='col-md-6'>{{movie.Plot}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-3'>IMDB rating:</div>
+          <div class='col-md-6'>
+            {{movie.imdbRating}}
+            <pm-star [rating]='movie.imdbRating'>
+            </pm-star>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-md-3'>Runtime:</div>
+          <div class='col-md-6'>{{movie.Runtime}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-3'>Genre:</div>
+          <div class='col-md-6'>{{movie.Genre}}</div>
+        </div>
+
+      </div>
+
+      <div class='col-md-6'>
+        <img class='center-block img-responsive' [style.width.px]='200' [style.margin.px]='2' [src]='movie.Poster'
+          [title]='movie.Title'>
+      </div>
+    </div>
+  </div>
+
+  <div class='panel-footer'>
+    <a class='btn btn-default' (click)='onBack()'>
+      <i class='glyphicon glyphicon-chevron-left'></i> Back
+    </a>
+  </div>
+</div> -->

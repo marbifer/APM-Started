@@ -1,19 +1,34 @@
 /********* SASS VARIABLES *********/
 
 $white: #ffffff;
+$white-light: #e0e0e0;
 $bordou: #8e0e00;
+$gold: #e2c043;
+$gradient-dark: #1f1c18;
+$pink: #f9a6a6;
 $color-badge: #cb4b16;
 $color-text-warning: #d33682;
+$red-light: #ff8ec5;
 
 body {
+  @extend .ng-gradient-right;
   padding: 0;
   color: #839496 !important;
+}
+
+.ng-gradient-right {
   background: $bordou;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #1f1c18, $bordou);
+  background: -webkit-linear-gradient(to right, $gradient-dark, $bordou);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #1f1c18, $bordou);
+  background: linear-gradient(to right, $gradient-dark, $bordou);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.ng-gradient-left {
+  background: $bordou;
+  background: -webkit-linear-gradient(to left, $gradient-dark, $bordou);
+  background: linear-gradient(to left, $gradient-dark, $bordou);
 }
 
 /* Navbar Styles */
@@ -106,3 +121,49 @@ body {
 .close {
   outline: 1px solid transparent !important;
 }
+
+/* Styles Detail Movie */
+.bg-card {
+  border: 1px solid #b95d5d;
+  max-width: 100%;
+
+  .ng-header {
+    @extend .ng-gradient-left;
+    border: 1px solid #884c4c;
+  }
+
+  .ng-body {
+    @extend .ng-gradient-left;
+    color: $white-light;
+
+    .detail-image {
+      img {
+        width: 100%;
+        box-shadow: 0px 0px 43px -3px $gold;
+      }
+    }
+
+    .ng-button {
+      border: 1px solid $white;
+      color: $white;
+      width: 110px;
+    }
+
+    .year-color {
+      color: $pink;
+      font-size: 2rem;
+    }
+
+    .ng-pink {
+      color: $gold;
+      font-size: 1.3rem;
+    }
+
+    .ng-run {
+      color: $red-light;
+      font-size: 1.2rem;
+    }
+  }
+
+}
+
