@@ -28,10 +28,13 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootswatch/dist/solar/bootstrap.min.css",
+              "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+        
+            ]
           },
           "configurations": {
             "production": {
@@ -78,14 +81,13 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css",
-              "node_modules/bootswatch/dist/solar/bootstrap.min.css"
+              "src/styles.scss"
             ],
             "scripts": [],
             "assets": [
+              "src/favicon.ico",
               "src/assets",
-              "src/api",
-              "src/favicon.ico"
+              "src/api"
             ]
           }
         },

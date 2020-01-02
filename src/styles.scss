@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import "~bootswatch/dist/solar/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/solar/bootswatch"; */
+
 $bordou: #8e0e00;
 $color-badge: #cb4b16;
 $color-text-warning: #d33682;
@@ -22,7 +26,7 @@ body {
 .my-nav {
   filter: alpha(opacity=50);
   background: rgba(255, 0, 0, 0.5);
-  position: fixed;
+  position: relative;
   z-index: 999;
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   transition: 300ms;
