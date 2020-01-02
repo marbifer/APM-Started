@@ -1,22 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootswatch/dist/solar/variables";
-@import "~bootstrap/scss/bootstrap";
-@import "~bootswatch/dist/solar/bootswatch";
+$bordou: #8e0e00;
+$color-badge: #cb4b16;
+$color-text-warning: #d33682;
 
 body {
   padding: 0;
   color: #839496 !important;
-  background: #8e0e00; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #1f1c18,
-    #8e0e00
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #1f1c18,
-    #8e0e00
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: $bordou;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right,
+      #1f1c18,
+      $bordou);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right,
+      #1f1c18,
+      $bordou);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 /* Navbar Styles */
@@ -45,24 +44,34 @@ div.panel-heading {
 
 /* Styles Movies List */
 .my-badge-warning {
-  background: #cb4b16;
+  background: $color-badge;
 }
+
 .my-text-warning {
-  color: #d33682;
+  color: $color-text-warning;
 }
 
 // Anidar
 .test {
   text-decoration: none !important;
-}
 
-.title {
-  font-weight: 900;
-  letter-spacing: 0.5px;
-  border-bottom: 3px solid #e12b5f;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  width: 57px;
+  .title {
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid #e12b5f;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    width: 57px;
+  }
+
+  .text-title {
+    font-size: 0.9rem;
+  }
+
+  .text-title:hover {
+    color: #ff90af;
+    font-weight: 700;
+  }
 }
 
 .year-type {
@@ -70,15 +79,6 @@ div.panel-heading {
   font-weight: 700;
   width: 38px;
   border-bottom: none;
-}
-
-.text-title {
-  font-size: 0.9rem;
-}
-
-.text-title:hover {
-  color: #ff90af;
-  font-weight: 700;
 }
 
 .my-image {
