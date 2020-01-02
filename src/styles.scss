@@ -5,6 +5,7 @@ $white-light: #e0e0e0;
 $bordou: #8e0e00;
 $gold: #e2c043;
 $gradient-dark: #1f1c18;
+$gray: #839496;
 $pink: #f9a6a6;
 $color-badge: #cb4b16;
 $color-text-warning: #d33682;
@@ -13,7 +14,7 @@ $red-light: #ff8ec5;
 body {
   @extend .ng-gradient-right;
   padding: 0;
-  color: #839496 !important;
+  color: $gray !important;
 }
 
 .ng-gradient-right {
@@ -50,10 +51,10 @@ body {
   a {
     font-size: large;
     text-decoration: none;
-  }
 
-  a:hover {
-    color: $white;
+    &:hover {
+      color: $white;
+    }
   }
 }
 
@@ -86,11 +87,11 @@ body {
       font-size: 1rem;
       text-transform: uppercase;
       font-weight: 700;
-    }
 
-    .text-title:hover {
-      color: #ff90af;
-      font-weight: 700;
+      &:hover {
+        color: #ff90af;
+        font-weight: 700;
+      }
     }
 
     .my-image {
