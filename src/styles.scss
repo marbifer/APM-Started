@@ -1,10 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
-/* @import "~bootswatch/dist/solar/variables";
-@import "~bootstrap/scss/bootstrap";
-@import "~bootswatch/dist/solar/bootswatch"; */
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+/********* SASS VARIABLES *********/
 
-$white: #FFFFFF;
+$white: #ffffff;
 $bordou: #8e0e00;
 $color-badge: #cb4b16;
 $color-text-warning: #d33682;
@@ -14,13 +10,9 @@ body {
   color: #839496 !important;
   background: $bordou;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right,
-      #1f1c18,
-      $bordou);
+  background: -webkit-linear-gradient(to right, #1f1c18, $bordou);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right,
-      #1f1c18,
-      $bordou);
+  background: linear-gradient(to right, #1f1c18, $bordou);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
@@ -39,7 +31,8 @@ body {
   opacity: 0.5;
   color: rgba(255, 255, 255, 0.5);
 
-  span, a {
+  span,
+  a {
     font-size: large;
     text-decoration: none;
   }
@@ -49,68 +42,67 @@ body {
   }
 }
 
-
 /* Styles Movies List */
-
-.search {
-  background: #fffbfd !important;
-  border-color: #f9a6a6;
-}
-
-
-.example-full-width {
-  width: 50%;
-}
-
-.my-badge-warning {
-  background: $color-badge;
-}
-
 .my-text-warning {
   color: $color-text-warning;
 }
 
-.all-info {
-  width: 187px;
-
-  .name-link {
-    min-height: 64px;
-    a {
-      text-decoration: none !important;
-     }
+.wrapper {
+  .my-badge-warning {
+    background: $color-badge;
   }
 
-  .text-title {
-    font-size: 1rem;
-    text-transform: uppercase;
-    font-weight: 700;
+  .search {
+    background: #fffbfd !important;
+    border-color: #f9a6a6;
   }
 
-  .text-title:hover {
-    color: #ff90af;
-    font-weight: 700;
-  }
-}
+  .all-info {
+    width: 187px;
 
-.year-type {
-  font-weight: 900;
-  letter-spacing: 0.5px;
-  border-bottom: 3px solid #e12b5f !important;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  width: 32px !important;
-  font-weight: 700;
-  width: 38px;
-  border-bottom: none;
-}
-
-.my-image {
-  background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    max-height: 326px;
-
-    img {
-      height: 268px !important;
+    .name-link {
+      min-height: 64px;
+      a {
+        text-decoration: none !important;
+      }
     }
+
+    .text-title {
+      font-size: 1rem;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .text-title:hover {
+      color: #ff90af;
+      font-weight: 700;
+    }
+
+    .my-image {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      max-height: 326px;
+  
+      img {
+        height: 268px !important;
+      }
+    }
+  
+    .year-type {
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      border-bottom: 3px solid #e12b5f !important;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      width: 32px !important;
+      font-weight: 700;
+      width: 38px;
+      border-bottom: none;
+    }
+  }
+}
+
+.close {
+  outline: 1px solid transparent !important;
 }
