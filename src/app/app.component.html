@@ -1,19 +1,12 @@
 <!--The whole content below can be removed with the new code.-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white my-nav">
-  <a class="navbar-brand" href="#">{{ pageTitle }}</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarColor">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active" *ngFor="let item of menu.items">
-        <a class="nav-link" routerLink="/{{ item.link }}">{{ item.title }}</a>
-      </li>
-    </ul>
+<mat-toolbar class="navbar navbar-dark bg-dark text-white my-nav d-flex justify-content-between" color="primary">
+  <a class="" href="#">{{ pageTitle }}</a>
+  <div class="">
+    <span class="ctive" *ngFor="let item of menu.items">
+      <a class="mr-3" routerLink="/{{ item.link }}">{{ item.title }}</a>
+    </span>
   </div>
-</nav>
-
+</mat-toolbar>
 
 <div class='container'>
   <router-outlet></router-outlet>

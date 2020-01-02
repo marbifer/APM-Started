@@ -3,6 +3,7 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~bootswatch/dist/solar/bootswatch"; */
 
+$white: #FFFFFF;
 $bordou: #8e0e00;
 $color-badge: #cb4b16;
 $color-text-warning: #d33682;
@@ -36,15 +37,17 @@ body {
   padding: 10px 50px !important;
   opacity: 0.5;
   color: rgba(255, 255, 255, 0.5);
+
+  span, a {
+    font-size: large;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $white;
+  }
 }
 
-li {
-  font-size: large;
-}
-
-div.panel-heading {
-  font-size: x-large;
-}
 
 /* Styles Movies List */
 .my-badge-warning {
@@ -55,7 +58,6 @@ div.panel-heading {
   color: $color-text-warning;
 }
 
-// Anidar
 .test {
   text-decoration: none !important;
 

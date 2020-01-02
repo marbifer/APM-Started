@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     pageTitle: string = 'Movies Application';
-    public isNavbarCollapsed: boolean = true;
 
     public menu = {
         items: [
