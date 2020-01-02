@@ -11,8 +11,6 @@ import { Router, ActivatedRoute, Params } from "@angular/router";
 })
 export class ProductListComponent implements OnInit {
   pageTitle: string = "Movies List";
-  imageWidth: number = 200;
-  imageMargin: number = 2;
   showImage: boolean = false;
   errorMessage: string;
   filmsData;
@@ -58,19 +56,15 @@ export class ProductListComponent implements OnInit {
     this._productService.getFilmsData1(dataSearched).subscribe(
       moviesData => {
         this.filteredMovies = moviesData.Search;
-       // this.location.replaceState("/searched/" + this.movieSearched);
-
+        // this.location.replaceState("/searched/" + this.movieSearched);
 
         const queryParams: Params = { searched: this.movieSearched };
 
-  this.router.navigate(
-    [], 
-    {
-      relativeTo: this.activatedRoute,
-      queryParams: queryParams, 
-      queryParamsHandling: 'merge', // remove to replace all query params by provided
-    });
-
+        this.router.navigate([], {
+          relativeTo: this.activatedRoute,
+          queryParams: queryParams,
+          queryParamsHandling: "merge" // remove to replace all query params by provided
+        });
 
         // this.filteredMovies = this.filmsData;
       },
@@ -91,16 +85,12 @@ export class ProductListComponent implements OnInit {
   } */
 
   ngOnInit(): void {
-
     this.activatedRoute.queryParams.subscribe((params: any) => {
-      if(params.searched){
-        console.log('params,', params)
+      if (params.searched) {
+        console.log("params,", params);
         this.movieSearched = params.searched;
       }
-      
-  });
-
-    
+    });
 
     /* this._productService.getFilmsData().subscribe(
       moviesData => {

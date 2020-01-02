@@ -2,6 +2,7 @@
 /* @import "~bootswatch/dist/solar/variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~bootswatch/dist/solar/bootswatch"; */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 $white: #FFFFFF;
 $bordou: #8e0e00;
@@ -50,6 +51,17 @@ body {
 
 
 /* Styles Movies List */
+
+.search {
+  background: #fffbfd !important;
+  border-color: #f9a6a6;
+}
+
+
+.example-full-width {
+  width: 50%;
+}
+
 .my-badge-warning {
   background: $color-badge;
 }
@@ -58,20 +70,20 @@ body {
   color: $color-text-warning;
 }
 
-.test {
-  text-decoration: none !important;
+.all-info {
+  width: 187px;
 
-  .title {
-    font-weight: 900;
-    letter-spacing: 0.5px;
-    border-bottom: 3px solid #e12b5f;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    width: 57px;
+  .name-link {
+    min-height: 64px;
+    a {
+      text-decoration: none !important;
+     }
   }
 
   .text-title {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
   }
 
   .text-title:hover {
@@ -81,12 +93,24 @@ body {
 }
 
 .year-type {
-  @extend .title;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  border-bottom: 3px solid #e12b5f !important;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  width: 32px !important;
   font-weight: 700;
   width: 38px;
   border-bottom: none;
 }
 
 .my-image {
-  height: 44vh;
+  background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-height: 326px;
+
+    img {
+      height: 268px !important;
+    }
 }
