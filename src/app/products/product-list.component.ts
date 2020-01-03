@@ -15,6 +15,7 @@ export class ProductListComponent implements OnInit {
   errorMessage: string;
   filmsData;
   filteredMovies;
+  loading = false;
 
   _movieSearched;
   _listFilter: string;
@@ -52,9 +53,11 @@ export class ProductListComponent implements OnInit {
     }
 
   performSearch(dataSearched: string) {
+    this.loading = true;
     dataSearched = dataSearched.toLocaleLowerCase();
     this._productService.getFilmsData1(dataSearched).subscribe(
       moviesData => {
+        this.loading = false;
         this.filteredMovies = moviesData.Search;
         // this.location.replaceState("/searched/" + this.movieSearched);
 
