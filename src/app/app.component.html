@@ -2,15 +2,26 @@
       *ngIf="loading"></span>
 
 <!--The whole content below can be removed with the new code.-->
-<mat-toolbar class="navbar navbar-dark bg-dark text-white my-nav d-flex justify-content-between" color="primary">
-  <a class="" href="#">{{ pageTitle }}</a>
-  <div class="">
-    <span class="ctive" *ngFor="let item of menu.items">
+<mat-toolbar class="navbar navbar-dark bg-dark text-white my-nav">
+  
+</mat-toolbar>
+<div class="contain-nav d-flex justify-content-between">
+  <a class="page-title" href="#">{{ pageTitle }}</a>
+  <div class="page-items">
+    <span class="active" *ngFor="let item of menu.items">
       <a class="mr-3" routerLink="/{{ item.link }}">{{ item.title }}</a>
     </span>
   </div>
-</mat-toolbar>
+</div>
 
 <div [ngStyle]="{'opacity': loading ? '0.2' : null }"  class='container'   [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''" >
   <router-outlet #o="outlet"></router-outlet>
 </div>
+
+<footer class="container-fluid ng-footer py-3">
+    <div class="d-flex justify-content-center">
+      <i class="fas fa-language logo-footer"></i>
+      <small class="d-flex justify-content-center align-items-center py-1 text-white">© Tallinn - Estonia 2019 - 2020</small>
+    </div>
+</footer>
+

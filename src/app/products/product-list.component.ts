@@ -54,22 +54,32 @@ export class ProductListComponent implements OnInit {
 
   performSearch(dataSearched: string) {
     this.loading = true;
+    this.errorMessage = null;
     dataSearched = dataSearched.toLocaleLowerCase();
     this._productService.getFilmsData1(dataSearched).subscribe(
       moviesData => {
+        console.log('ver', moviesData)
         this.loading = false;
-        this.filteredMovies = moviesData.Search;
-        // this.location.replaceState("/searched/" + this.movieSearched);
-
-        const queryParams: Params = { searched: this.movieSearched };
-
-        this.router.navigate([], {
-          relativeTo: this.activatedRoute,
-          queryParams: queryParams,
-          queryParamsHandling: "merge" // remove to replace all query params by provided
-        });
-
-        // this.filteredMovies = this.filmsData;
+        if(moviesData.Response === "False"){
+          this.errorMessage = moviesData.Error;
+          this.filteredMovies = null;
+        }else{
+          this.errorMessage = null;
+         
+          this.filteredMovies = moviesData.Search;
+          // this.location.replaceState("/searched/" + this.movieSearched);
+  
+          const queryParams: Params = { searched: this.movieSearched };
+  
+          this.router.navigate([], {
+            relativeTo: this.activatedRoute,
+            queryParams: queryParams,
+            queryParamsHandling: "merge" // remove to replace all query params by provided
+          });
+  
+          // this.filteredMovies = this.filmsData;
+        }
+       
       },
       error => (this.errorMessage = <any>error)
     );
