@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 
-import { IProduct } from "./product";
+import { Product } from "./product";
 import { ProductService } from "./product.service";
 import { Location } from "@angular/common";
 import { Router, ActivatedRoute, Params } from "@angular/router";
@@ -37,8 +37,8 @@ export class ProductListComponent implements OnInit {
     this.performSearch(this.movieSearched);
   }
 
-  filteredProducts: IProduct[];
-  products: IProduct[] = [];
+  filteredProducts: Product[];
+  products: Product[] = [];
 
   constructor(
     private _productService: ProductService,

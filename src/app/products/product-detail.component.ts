@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
-import { IProduct } from "./product";
+import { Product } from "./product";
 import { ProductService } from "./product.service";
 
 @Component({
@@ -11,7 +11,7 @@ import { ProductService } from "./product.service";
 export class ProductDetailComponent implements OnInit {
   pageTitle: string = "Movie Detail";
   errorMessage: string;
-  product: IProduct;
+  product: Product;
   searched;
   movie;
 
@@ -40,6 +40,6 @@ export class ProductDetailComponent implements OnInit {
   }
 
   onBack(): void {
-    this._router.navigate(["/movies"], { queryParams: { searched: this.searched } });
+    this._router.navigate(["/movies-list"], { queryParams: { searched: this.searched } });
   }
 }

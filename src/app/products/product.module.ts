@@ -1,26 +1,31 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
 import { ProductListComponent } from './product-list.component';
 import { ProductDetailComponent } from './product-detail.component';
-import { ConvertToSpacesPipe } from '../shared/convert-to-spaces.pipe';
-import { RouterModule } from '@angular/router';
 import { ProductGuardService } from './product-guard.service';
 import { ProductService } from './product.service';
-import { SharedModule } from './../shared/shared.module';
+
+import { SharedModule } from '../shared/shared.module';
+
 
 @NgModule({
   imports: [
+    SharedModule,
     RouterModule.forChild([
-        { path: 'movies', component: ProductListComponent },
-        { path: 'movies/:id/:searched',
-          canActivate: [ ProductGuardService ],
-          component: ProductDetailComponent }
-    ]),
-    SharedModule
+      {
+        path: '',
+        component: ProductListComponent
+      },
+      {
+        path: 'detail/:id/:searched',
+        component: ProductDetailComponent
+      }
+    ])
   ],
   declarations: [
     ProductListComponent,
-    ProductDetailComponent,
-    ConvertToSpacesPipe
+    ProductDetailComponent
   ],
   providers: [
     ProductService,

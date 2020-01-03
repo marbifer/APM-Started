@@ -24,7 +24,7 @@
     <div class="w-100 d-flex flex-row justify-content-between flex-wrap" *ngIf="products && products.length">
       <div class="d-flex flex-column all-info justify-content-end mb-5" *ngFor="let movies of filteredMovies">
         <div class="name-link">
-          <a class="text-white" [routerLink]="['/movies', movies.imdbID, movieSearched]">
+          <a class="text-white" [routerLink]="['/movies-list/detail', movies.imdbID, movieSearched]">
             <p class="text-title">{{ movies.Title }}</p>
           </a>
         </div>

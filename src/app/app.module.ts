@@ -1,37 +1,37 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MatToolbarModule } from '@angular/material/toolbar';
 
+
+
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
-import { ProductModule } from './products/product.module';
-import { ProductListComponent } from './products/product-list.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatToolbarModule } from '@angular/material/toolbar';
+/* Feature Modules */
+
 
 const modules = [
   NgbModule,
   BrowserModule,
+  BrowserAnimationsModule,
   HttpClientModule,
   MatToolbarModule,
-  ProductModule
 ];
 
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    WelcomeComponent
-  ],
   imports: [
     modules,
-    RouterModule.forRoot([
-        { path: 'welcome', component: WelcomeComponent },
-        { path: 'movies-list', component: ProductListComponent },
-        { path: '', redirectTo: 'welcome', pathMatch: 'full'},
-        { path: '**', redirectTo: 'welcome', pathMatch: 'full'}
-    ])
+    AppRoutingModule
+  ],
+  declarations: [
+    AppComponent,
+    WelcomeComponent,
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

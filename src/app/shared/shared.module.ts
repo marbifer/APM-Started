@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StarComponent } from './star.component';
 import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
-    CommonModule,
-    BrowserAnimationsModule
+    CommonModule
   ],
   declarations: [
     StarComponent
@@ -15,8 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   exports: [
     StarComponent,
     CommonModule,
-    FormsModule,
-    BrowserAnimationsModule
+    FormsModule
   ]
 })
 export class SharedModule { }
