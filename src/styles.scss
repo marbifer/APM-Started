@@ -36,7 +36,7 @@ body {
 .my-nav {
   filter: alpha(opacity=50);
   background: rgba(255, 0, 0, 0.5);
-  position: relative;
+  position: absolute;
   z-index: 999;
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   transition: 300ms;
@@ -46,14 +46,38 @@ body {
   padding: 10px 50px !important;
   opacity: 0.5;
   color: rgba(255, 255, 255, 0.5);
+  z-index: 0;
+}
 
-  span,
+.contain-nav {
+  padding: 17px 50px !important;
+  font-size: large;
+
   a {
-    font-size: large;
     text-decoration: none;
+  }
 
-    &:hover {
-      color: $white;
+  .page-title {
+    background-color: transparent;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 9999;
+    color: $white;
+    letter-spacing: 2px;
+    font-weight: 500;
+  }
+
+  .page-items {
+    a {
+      @extend .page-title;
+      text-transform: capitalize;
+      letter-spacing: 1px !important;
+      font-weight: 300;
+    }
+
+    a:hover {
+      color: $gold;
+      font-weight: 400;
     }
   }
 }
@@ -78,6 +102,7 @@ body {
 
     .name-link {
       min-height: 64px;
+
       a {
         text-decoration: none !important;
       }
@@ -99,12 +124,12 @@ body {
       background-repeat: no-repeat;
       background-size: cover;
       max-height: 326px;
-  
+
       img {
         height: 268px !important;
       }
     }
-  
+
     .year-type {
       font-weight: 900;
       letter-spacing: 0.5px;
@@ -168,8 +193,25 @@ body {
 
 }
 
+
+/* Styles Welcome */
+.welcome-image {
+  width: 66%;
+  margin-top: -6rem;
+}
+
 /* Styles Footer */
 .ng-footer {
   background: $gradient-dark;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+}
+
+/* Media Queries */
+@media (max-width: 599px) {
+  .my-nav {
+    height: 100px !important;
+  }
 }
 

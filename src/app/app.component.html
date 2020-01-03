@@ -1,12 +1,15 @@
 <!--The whole content below can be removed with the new code.-->
-<mat-toolbar class="navbar navbar-dark bg-dark text-white my-nav d-flex justify-content-between" color="primary">
-  <a class="" href="#">{{ pageTitle }}</a>
-  <div class="">
-    <span class="ctive" *ngFor="let item of menu.items">
+<mat-toolbar class="navbar navbar-dark bg-dark text-white my-nav">
+  
+</mat-toolbar>
+<div class="contain-nav d-flex justify-content-between">
+  <a class="page-title" href="#">{{ pageTitle }}</a>
+  <div class="page-items">
+    <span class="active" *ngFor="let item of menu.items">
       <a class="mr-3" routerLink="/{{ item.link }}">{{ item.title }}</a>
     </span>
   </div>
-</mat-toolbar>
+</div>
 
 <div class="container">
   <router-outlet></router-outlet>
