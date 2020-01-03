@@ -33,7 +33,7 @@
 
         <div class="my-image">
           <img class="img-thumbnail" *ngIf="movies.Poster" (error)="movies.Poster = false" [src]="movies.Poster" [title]="movies.Title" />
-          <p *ngIf="!movies.Poster">no image</p>
+          <img *ngIf="!movies.Poster" src="./assets/images/no-image.png" class="img-thumbnail no-image center-block"/>  
         </div>
 
         <div class="d-flex flex-column justify-content-start text-white mt-3">
