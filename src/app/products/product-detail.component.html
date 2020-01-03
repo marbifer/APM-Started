@@ -1,38 +1,59 @@
 
 
-<div class="card bg-card mt-5" *ngIf='movie'>
+<div class="card bg-card mt-4" *ngIf='movie'>
   <div class="card-header ng-header text-white">
-   <h2> Title: {{ movie.Title }}</h2>
+    <div class="d-flex flex-row">
+      <i class="fas fa-photo-video logo-footer mt-2 mr-2"></i>
+      <h2> Title: {{ movie.Title }}</h2>
+    </div>
   </div>
 
   <div class="card-body ng-body">
 
     <div class="d-flex flex-row">
-      <div class="w-75 mr-1">
+      <div class="w-75 mr-4">
         <h5 class="year-color card-title d-flex align-items-center">
-          <span class="mr-2">Year:</span>
-          <span class=""> {{ movie.Year }}</span>
+          <div class="d-flex flex-row align-items-center">
+            <i class="fas fa-calendar-alt mr-2"></i>
+            <span class="mr-2">Year:</span>
+            <span class=""> {{ movie.Year }}</span>
+          </div>
         </h5>
 
         <h5 class="card-title">
-          Type: {{ movie.Type }}
+          <div class="d-flex flex-row align-items-center">
+            <i class="fab fa-accusoft mr-2"></i>
+            Type: {{ movie.Type }}
+          </div>
         </h5>
 
         <blockquote class="blockquote">
-           <cite title="Source Title">Plot: {{ movie.Plot }}</cite>
+          <div class="d-flex flex-row align-items-center">
+            <i class="fas fa-file mr-2"></i>
+            <cite title="Source Title">Plot: {{ movie.Plot }}</cite>
+          </div>
         </blockquote>
 
         <div class="ng-pink">
-          IMDB rating: {{ movie.imdbRating }}
-          <pm-star [rating]='movie.imdbRating'></pm-star>
+          <div class="d-flex flex-row align-items-center">
+            <i class="fas fa-star mr-2"></i>
+            IMDB rating: {{ movie.imdbRating }}
+            <pm-star [rating]='movie.imdbRating'></pm-star>
+          </div>
         </div>
 
         <div class='ng-run'>
-          Runtime: {{ movie.Runtime }}
+          <div class="d-flex flex-row align-items-center">
+            <i class="fas fa-tape mr-2"></i>
+            Runtime: {{ movie.Runtime }}
+          </div>
         </div>
 
         <div class='ng-text'>
-          Genre: {{ movie.Genre }}
+          <div class="d-flex flex-row align-items-center">
+            <i class="fas fa-certificate mr-2"></i>
+            Genre: {{ movie.Genre }}
+          </div>
         </div>
       </div>
 

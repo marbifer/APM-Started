@@ -1,12 +1,11 @@
-<span class="fa fa-spinner spinner"
-      *ngIf="loading"></span>
+<span class="fa fa-spinner spinner" *ngIf="loading"></span>
 
-<!--The whole content below can be removed with the new code.-->
-<mat-toolbar class="navbar navbar-dark bg-dark text-white my-nav">
-  
-</mat-toolbar>
+<mat-toolbar class="navbar navbar-dark bg-dark text-white my-nav"></mat-toolbar>
 <div class="contain-nav d-flex justify-content-between">
-  <a class="page-title" href="#">{{ pageTitle }}</a>
+  <div class="d-flex flex-row">
+    <i class="page-title fas fa-film logo-footer mr-2"></i>
+    <a class="page-title" href="#">{{ pageTitle }}</a>
+  </div>
   <div class="page-items">
     <span class="active" *ngFor="let item of menu.items">
       <a class="mr-3" routerLink="/{{ item.link }}">{{ item.title }}</a>
@@ -20,7 +19,7 @@
 
 <footer class="container-fluid ng-footer py-3">
     <div class="d-flex justify-content-center">
-      <i class="fas fa-language logo-footer"></i>
+      <i class="fas fa-film logo-footer mt-1 mr-2"></i>
       <small class="d-flex justify-content-center align-items-center py-1 text-white">© Tallinn - Estonia 2019 - 2020</small>
     </div>
 </footer>

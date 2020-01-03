@@ -1,5 +1,4 @@
-<span class="fa fa-spinner spinner"
-      *ngIf="loading"></span>
+<span class="fa fa-spinner spinner" *ngIf="loading"></span>
 
 <div class="panel panel-primary">
   <div class="panel-heading my-4 my-text-warning">
@@ -54,12 +53,11 @@
     </div>
   </div>
 </div>
-<!-- <div *ngIf="errorMessage" class="alert alert-danger">
-  Error: {{ errorMessage }}
-</div>
- -->
-<!-- Error message -->
+
 <div *ngIf="errorMessage" class="alert alert-dismissible alert-danger text-white">
   <button type="button" class="close" (click)="errorMessage = null" data-dismiss="alert">&times;</button>
-  <strong>Error: </strong> {{ errorMessage }} 
+    <div class="d-flex align-items-center">
+      <i class="fas fa-exclamation-circle logo-error mr-3"></i>
+      <strong>{{ errorMessage }} </strong>
+    </div>
 </div>

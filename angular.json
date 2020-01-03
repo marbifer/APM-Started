@@ -60,7 +60,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "apm:build",
-            "port": 1200
+            "port": 4200
           },
           "configurations": {
             "production": {

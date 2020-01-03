@@ -1,4 +1,8 @@
-@import "~font-awesome/css/font-awesome.min.css";
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts/";
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+
 /********* SASS VARIABLES *********/
 
 $white: #ffffff;
@@ -81,6 +85,10 @@ body {
       font-weight: 400;
     }
   }
+
+  .logo-footer {
+    font-size: 2rem;
+  }
 }
 
 /* Styles Movies List */
@@ -149,6 +157,10 @@ body {
   outline: 1px solid transparent !important;
 }
 
+.logo-error {
+  font-size: 2.5rem;
+}
+
 /* Styles Detail Movie */
 .bg-card {
   border: 1px solid #b95d5d;
@@ -157,6 +169,10 @@ body {
   .ng-header {
     @extend .ng-gradient-left;
     border: 1px solid #884c4c;
+
+    .logo-footer {
+      font-size: 1.5rem;
+    }  
   }
 
   .ng-body {
@@ -205,6 +221,10 @@ body {
   position: fixed;
   left: 0px;
   bottom: 0px;
+
+  .logo-footer {
+    font-size: 1rem;
+  }
 }
 
 /* Media Queries */
