@@ -1,7 +1,7 @@
 $fa-font-path: "~@fortawesome/fontawesome-free/webfonts/";
-@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
-@import '~@fortawesome/fontawesome-free/scss/solid.scss';
-@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
 
 /********* SASS VARIABLES *********/
 
@@ -106,46 +106,52 @@ body {
     border-color: #f9a6a6;
   }
 
-  .all-info {
-    width: 187px;
-
-    .name-link {
-      min-height: 64px;
-
-      a {
-        text-decoration: none !important;
-      }
-    }
-
-    .text-title {
-      font-size: 1rem;
-      text-transform: uppercase;
-      font-weight: 700;
-
-      &:hover {
-        color: #ff90af;
-        font-weight: 700;
-      }
-    }
-
+  .all-information {
+    width: 280px;
+  
     .my-image {
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       max-height: 326px;
-
+  
       img {
         height: 268px !important;
       }
     }
-
+  
+    .new-card {
+      min-height: 607px;
+  
+      .card-header {
+        background: #1f1e1e;
+  
+        .text-title {
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          font-weight: 700;
+          text-decoration: none !important;
+  
+          &:hover {
+            color: #ff90af;
+            font-weight: 700;
+            text-decoration: none !important;
+          }
+        }
+      }
+  
+      .list-group-item {
+        background: #1f1e1e;
+      }
+    }
+  
     .year-type {
       font-weight: 900;
       letter-spacing: 0.5px;
       border-bottom: 3px solid #e12b5f !important;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       text-transform: uppercase;
-      width: 32px !important;
+      width: 42px !important;
       font-weight: 700;
       width: 38px;
       border-bottom: none;
@@ -172,7 +178,7 @@ body {
 
     .logo-footer {
       font-size: 1.5rem;
-    }  
+    }
   }
 
   .ng-body {
