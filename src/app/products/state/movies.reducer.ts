@@ -3,11 +3,12 @@ import { createFeatureSelector, createSelector } from "@ngrx/store";
 
 import { EntityState, EntityAdapter, createEntityAdapter } from "@ngrx/entity";
 
-import { Movie, MoviesList } from "../product";
+import { Movie, MoviesList, MovieDetail } from "../product";
 import * as fromRoot from "../../state/app-state";
 
 export interface MoviesState {
-  movies: MoviesList ;
+  movies: MoviesList;
+  movieDetail: MovieDetail;
   loading: boolean;
   loaded: boolean;
   error: string;
@@ -18,10 +19,11 @@ export interface AppState extends fromRoot.AppState {
 }
 
 export const initialState: MoviesState = {
-    movies: null,
-    loading: false,
-    loaded: false,
-    error: ''
+  movies: null,
+  movieDetail: null,
+  loading: false,
+  loaded: false,
+  error: ""
 };
 
 export function moviesReducer(
@@ -30,19 +32,18 @@ export function moviesReducer(
 ): MoviesState {
   switch (action.type) {
     case moviesActions.MoviesActionTypes.LOAD_MOVIES: {
-        return  {
-          ...state,
-          loading: true,
-        }
-       
+      return {
+        ...state,
+        loading: true
+      };
     }
     case moviesActions.MoviesActionTypes.LOAD_MOVIES_SUCCESS: {
-      return  {
+      return {
         ...state,
         loading: false,
         loaded: true,
         movies: action.payload
-      }
+      };
     }
     case moviesActions.MoviesActionTypes.LOAD_MOVIES_FAIL: {
       return {
@@ -51,9 +52,32 @@ export function moviesReducer(
         loading: false,
         loaded: false,
         error: action.payload
-      }
+      };
     }
 
+    case moviesActions.MoviesActionTypes.LOAD_MOVIE_DETAIL: {
+      return {
+        ...state,
+        loading: true
+      };
+    }
+    case moviesActions.MoviesActionTypes.LOAD_MOVIE_DETAIL_SUCCESS: {
+      return {
+        ...state,
+        movieDetail: action.payload,
+        loading: false,
+        loaded: true
+      };
+    }
+    case moviesActions.MoviesActionTypes.LOAD_MOVIE_DETAIL_FAIL: {
+      return {
+        ...state,
+        movieDetail: null,
+        loading: false,
+        loaded: false,
+        error: action.payload
+      };
+    }
 
     default: {
       return state;
@@ -61,13 +85,14 @@ export function moviesReducer(
   }
 }
 
-const getMoviesFeatureState = createFeatureSelector<MoviesState>(
-  "movies"
-);
+const getMoviesFeatureState = createFeatureSelector<MoviesState>("movies");
+const getMovieDetailFeatureState = createFeatureSelector<MoviesState>("movies");
+
+//list
 
 export const getMovies = createSelector(
- getMoviesFeatureState,
- (state: MoviesState) => state.movies
+  getMoviesFeatureState,
+  (state: MoviesState) => state.movies
 );
 
 export const getMoviesLoading = createSelector(
@@ -85,4 +110,24 @@ export const getError = createSelector(
   (state: MoviesState) => state.error
 );
 
+//detail
 
+export const getMovieDetail = createSelector(
+    getMovieDetailFeatureState,
+  (state: MoviesState) => state.movieDetail
+);
+
+export const getMovieDetailLoading = createSelector(
+    getMovieDetailFeatureState,
+  (state: MoviesState) => state.loading
+);
+
+export const getMovieDetailLoaded = createSelector(
+    getMovieDetailFeatureState,
+  (state: MoviesState) => state.loaded
+);
+
+export const getErrorMovieDetail = createSelector(
+    getMovieDetailFeatureState,
+  (state: MoviesState) => state.error
+);

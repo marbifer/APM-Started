@@ -38,3 +38,11 @@ export interface MovieDetail {
   Website: string;
   Response: string;
 }
+
+export interface MovieListSearch {
+  search: string;
+}
+
+export interface MovieIdSearch {
+  search: string;
+}

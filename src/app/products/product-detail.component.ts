@@ -4,6 +4,10 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Movie, MovieDetail } from "./product";
 import { ProductService } from "./product.service";
 import { Subscription } from "rxjs";
+import { Store, select } from "@ngrx/store";
+import { Observable } from "rxjs";
+import * as moviesActions from "./state/movies.actions";
+import * as fromMovies from "./state/movies.reducer";
 
 @Component({
   templateUrl: "./product-detail.component.html",
@@ -14,12 +18,16 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   public movie: MovieDetail;
   private searched: string;
 
+  movieDetail$: Observable<MovieDetail>;
+  testDetail;
+
   private subs: Subscription;
 
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
-    private _productService: ProductService
+    private _productService: ProductService,
+    private store: Store<any>
   ) {}
 
   ngOnInit() {
@@ -30,7 +38,15 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       //const id = +param;
       const id = param;
       this.getMovieDetal(id);
+      this.store.dispatch(new moviesActions.LoadMovieDetail({ search: id }));
     }
+
+    this.movieDetail$ = this.store.pipe(select(fromMovies.getMovieDetail));
+    this.movieDetail$.subscribe(state => {
+      this.testDetail = state;
+
+      console.log("state Detail: ", this.testDetail);
+    });
   }
 
   public onBack(): void {
