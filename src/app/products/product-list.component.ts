@@ -1,21 +1,23 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 
 import { Movie, MoviesList } from "./product";
 import { ProductService } from "./product.service";
 
 import { Router, ActivatedRoute, Params } from "@angular/router";
+import { Subscription } from "rxjs";
 
 @Component({
   templateUrl: "./product-list.component.html",
   styleUrls: ["./product-list.component.css"]
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
   public pageTitle: string = "Movies List";
   public errorMessage: string;
   public filteredMovies: Movie[];
   public loading = false;
 
   private _movieSearched: string;
+  private subs: Subscription;
 
   get movieSearched(): string {
     return this._movieSearched;
@@ -46,7 +48,7 @@ export class ProductListComponent implements OnInit {
   }
 
   private performSearch(dataSearched: string): void {
-    this._productService.getFilmsData$(dataSearched).subscribe(
+    this.subs = this._productService.getFilmsData$(dataSearched).subscribe(
       (moviesData: MoviesList) => {
         console.log("ver", moviesData);
         this.loading = false;
@@ -72,5 +74,9 @@ export class ProductListComponent implements OnInit {
       },
       error => (this.errorMessage = <any>error)
     );
+  }
+
+  ngOnDestroy(){
+    this.subs.unsubscribe();
   }
 }
