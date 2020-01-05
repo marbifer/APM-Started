@@ -5,6 +5,11 @@ import { ProductService } from "./product.service";
 
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { Subscription } from "rxjs";
+import { Store, select  } from "@ngrx/store";
+import { Observable } from "rxjs";
+import * as moviesActions from "./state/movies.actions";
+import * as fromMovies from "./state/movies.reducer";
+
 
 @Component({
   templateUrl: "./product-list.component.html",
@@ -15,6 +20,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
   public errorMessage: string;
   public filteredMovies: Movie[];
   public loading = false;
+
+  movies$ : Observable<MoviesList>;
+  test:MoviesList;
 
   private _movieSearched: string;
   private subs: Subscription;
@@ -32,11 +40,21 @@ export class ProductListComponent implements OnInit, OnDestroy {
   constructor(
     private _productService: ProductService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private store: Store<any>
   ) {}
 
   ngOnInit(): void {
     this.activeRouteInit();
+
+    this.movies$ = this.store.pipe(select(fromMovies.getMovies));
+
+    this.movies$.subscribe(state => {
+     
+      this.test = state;
+
+      console.log('state: ', this.test)
+    });
   }
 
   private activeRouteInit(): void {
@@ -60,16 +78,16 @@ export class ProductListComponent implements OnInit, OnDestroy {
           this.filteredMovies = null;
         } else {
           this.errorMessage = null;
-
           this.filteredMovies = moviesData.Search;
-
           const queryParams: Params = { searched: this.movieSearched };
-
           this.router.navigate([], {
             relativeTo: this.activatedRoute,
             queryParams: queryParams,
             queryParamsHandling: "merge"
           });
+
+          this.store.dispatch(new moviesActions.LoadMovies({search: dataSearched}));
+
         }
       },
       error => (this.errorMessage = <any>error)

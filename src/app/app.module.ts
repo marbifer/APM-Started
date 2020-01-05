@@ -8,6 +8,10 @@ import { WelcomeComponent } from './home/welcome.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { EffectsModule } from "@ngrx/effects";
+
 const modules = [
   NgbModule,
   BrowserModule,
@@ -19,8 +23,12 @@ const modules = [
 @NgModule({
   imports: [
     modules,
+    StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([]),
     AppRoutingModule
   ],
+  exports: [AppRoutingModule], 
   declarations: [
     AppComponent,
     WelcomeComponent,
