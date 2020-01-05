@@ -9,6 +9,7 @@ $white: #ffffff;
 $white-light: #e0e0e0;
 $bordou: #8e0e00;
 $border-card: #8c3333;
+$text-input: #909;
 $gold: #e2c043;
 $icon-gold: #d8a718;
 $gradient-dark: #1f1c18;
@@ -105,8 +106,51 @@ body {
   }
 
   .search {
-    background: #fffbfd !important;
-    border-color: #f9a6a6;
+    background: $white !important;
+    border: 3px solid $gold;
+    height: 50px;
+    font-size: 1.2rem;
+    color: $text-input;
+    font-weight: 600;
+    font-family: "Font Awesome 5 Free", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue";
+
+    &::-webkit-input-placeholder {
+      /* WebKit, Blink, Edge */
+      color: $text-input;
+      font-weight: 600;
+    }
+
+    &:-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      color: $text-input;
+      font-weight: 600;
+      opacity: 1;
+    }
+
+    &::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: $text-input;
+      font-weight: 600;
+      opacity: 1;
+    }
+
+    &:-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: $text-input;
+      font-weight: 600;
+    }
+
+    &::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: $text-input;
+      font-weight: 600;
+    }
+
+    &::placeholder {
+      /* Most modern browsers support this now. */
+      color: $text-input;
+      font-weight: 600;
+    }
   }
 
   .all-information {
@@ -134,23 +178,6 @@ body {
           }
         }
 
-       /*  .watch {
-          position: absolute;
-          margin: 0 auto;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          top: 0;
-          bottom: 106px;
-          left: 0;
-          right: 0;
-          z-index: 1;
-
-          &.hidden {
-            overflow: hidden;
-          }
-        } */
-
         .card-body {
           position: relative;
           background: $back-card;
@@ -161,7 +188,7 @@ body {
           background-size: cover;
 
           img {
-            height: 360px !important;
+            height: 360px;
 
             &:hover {
               position: relative;
@@ -210,7 +237,6 @@ body {
 }
 
 /* Styles Detail Movie */
-
 .bg-card {
   border: 1px solid #b95d5d;
   max-width: 100%;
@@ -282,7 +308,19 @@ body {
   }
 }
 
+
 /* Media Queries */
+@media (max-width: 767px) {
+  .all-information {
+    width: 100% !important;
+
+    img {
+      height: auto !important;
+      width: 100% !important;
+    }
+  }
+}
+
 @media (max-width: 599px) {
   .my-nav {
     height: 100px !important;
