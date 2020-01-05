@@ -36,7 +36,7 @@
           <div class="d-flex flex-row align-items-center">
             <i class="fas fa-star mr-2"></i>
             IMDB rating: {{ movie.imdbRating }}
-            <pm-star [rating]='movie.imdbRating'></pm-star>
+          
           </div>
         </div>
 
@@ -57,8 +57,8 @@
 
       <div class="w-25">
         <div class='detail-image'>
-          <img class='center-block img-responsive' [src]='movie.Poster'
-            [title]='movie.Title'>
+          <img class='center-block img-responsive' *ngIf="movie.Poster"  [src]='movie.Poster' (error)="movie.Poster = null" [title]='movie.Title'>
+          <img *ngIf="!movie.Poster" src="./assets/images/no-image.png" class="img-thumbnail no-image center-block"/>  
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
-import { Product } from "./product";
+import { Movie, MovieDetail } from "./product";
 import { ProductService } from "./product.service";
 
 @Component({
@@ -9,11 +9,9 @@ import { ProductService } from "./product.service";
   styleUrls: ["./product-detail.component.css"]
 })
 export class ProductDetailComponent implements OnInit {
-  pageTitle: string = "Movie Detail";
-  errorMessage: string;
-  product: Product;
-  searched;
-  movie;
+  public errorMessage: string;
+  private searched: string;
+  public movie: MovieDetail;
 
   constructor(
     private _route: ActivatedRoute,
@@ -32,14 +30,16 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
-  getMovieDetal(id: string) {
-    this._productService.getMovieDetail(id).subscribe(
-      movie => (this.movie = movie),
-      error => (this.errorMessage = <any>error)
-    );
+  public onBack(): void {
+    this._router.navigate(["/movies-list"], {
+      queryParams: { searched: this.searched }
+    });
   }
 
-  onBack(): void {
-    this._router.navigate(["/movies-list"], { queryParams: { searched: this.searched } });
+  private getMovieDetal(id: string): void {
+    this._productService.getMovieDetail(id).subscribe(
+      (movie: MovieDetail) => (this.movie = movie),
+      error => (this.errorMessage = <any>error)
+    );
   }
 }

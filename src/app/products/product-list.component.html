@@ -23,7 +23,7 @@
     </div>
 
     <!-- List Movies -->
-    <div class="w-100 d-flex flex-row justify-content-between flex-wrap mb-5" *ngIf="products && products.length">
+    <div class="w-100 d-flex flex-row justify-content-between flex-wrap mb-5" *ngIf="filteredMovies">
       <div class="d-flex flex-column all-information justify-content-between mb-5" *ngFor="let movies of filteredMovies">
 
         <div class="card mb-3 new-card">
@@ -35,7 +35,7 @@
           <div class="card-body">
             <h5 class="card-title">Special title treatment</h5>
 
-            <img class="img-thumbnail" *ngIf="movies.Poster" (error)="movies.Poster = false" [src]="movies.Poster" [title]="movies.Title" />
+            <img class="img-thumbnail" *ngIf="movies.Poster" (error)="movies.Poster = null" [src]="movies.Poster" [title]="movies.Title" />
             <img *ngIf="!movies.Poster" src="./assets/images/no-image.png" class="img-thumbnail no-image center-block"/>  
           </div>
          
@@ -52,33 +52,7 @@
         </div>
 
       
-        <!-- <div class="my-image">
-          <img class="img-thumbnail" *ngIf="movies.Poster" (error)="movies.Poster = false" [src]="movies.Poster" [title]="movies.Title" />
-          <img *ngIf="!movies.Poster" src="./assets/images/no-image.png" class="img-thumbnail no-image center-block"/>  
-        </div> -->
-
-       <!--  <div class="d-flex flex-column justify-content-between">
-          <div class="name-link">
-            <a class="text-white" [routerLink]="['/movies-list/detail', movies.imdbID, movieSearched]">
-              <p class="text-title mt-2">{{ movies.Title }}</p>
-            </a>
-          </div>
   
-          <div class="d-flex flex-column text-white">
-            <div class="d-flex flex-row text-white">
-              <span class="year-type mr-2">Year:</span>
-              {{ movies.Year }}
-            </div>
-    
-            <div class="d-flex flex-row text-white">
-              <span class="year-type mr-2">Type:</span>
-              {{ movies.Type }}
-            </div>
-          </div>
-  
-           <pm-star [rating]='movies.starRating' (ratingClicked)='onRatingClicked($event)'></pm-star>
-
-        </div> -->
       </div>
     </div>
   </div>
