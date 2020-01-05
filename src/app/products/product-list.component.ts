@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-
 import { Movie, MoviesList } from "./product";
 import { ProductService } from "./product.service";
-
 import { Router, ActivatedRoute, Params } from "@angular/router";
 
 @Component({
@@ -58,9 +56,7 @@ export class ProductListComponent implements OnInit {
           this.filteredMovies = null;
         } else {
           this.errorMessage = null;
-
           this.filteredMovies = moviesData.Search;
-
           const queryParams: Params = { searched: this.movieSearched };
 
           this.router.navigate([], {

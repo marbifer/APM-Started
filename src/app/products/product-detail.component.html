@@ -6,8 +6,7 @@
     </div>
   </div>
 
-  <div class="card-body card-detail ng-body">
-
+  <div class="card-body ng-body">
     <div class="d-flex flex-row">
       <div class="w-75 mr-4">
         <h5 class="year-color card-title d-flex align-items-center">
@@ -55,7 +54,7 @@
         </div>
       </div>
 
-      <div class="w-25">
+      <div class="w-25 d-flex justify-content-center wrapper-image">
         <div class='detail-image'>
           <img class='center-block img-responsive' *ngIf="movie.Poster"  [src]='movie.Poster' (error)="movie.Poster = null" [title]='movie.Title'>
           <img *ngIf="!movie.Poster" src="./assets/images/no-image.png" class="img-thumbnail no-image center-block"/>  
