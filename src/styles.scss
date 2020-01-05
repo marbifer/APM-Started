@@ -9,10 +9,13 @@ $white: #ffffff;
 $white-light: #e0e0e0;
 $bordou: #8e0e00;
 $border-card: #8c3333;
+$text-input: #909;
+$border-bottom: #e12b5f;
 $gold: #e2c043;
 $icon-gold: #d8a718;
 $gradient-dark: #1f1c18;
 $back-card: #1f1e1e;
+$header-card: #333131;
 $gray: #839496;
 $pink: #f9a6a6;
 $color-badge: #cb4b16;
@@ -57,7 +60,7 @@ body {
   z-index: 0;
 }
 
-.contain-nav {
+.container-nav {
   padding: 17px 50px !important;
   font-size: large;
 
@@ -105,8 +108,51 @@ body {
   }
 
   .search {
-    background: #fffbfd !important;
-    border-color: #f9a6a6;
+    background: $white !important;
+    border: 3px solid $gold;
+    height: 50px;
+    font-size: 1.2rem;
+    color: $text-input;
+    font-weight: 600;
+    font-family: "Font Awesome 5 Free", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue";
+
+    &::-webkit-input-placeholder {
+      /* WebKit, Blink, Edge */
+      color: $text-input;
+      font-weight: 600;
+    }
+
+    &:-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      color: $text-input;
+      font-weight: 600;
+      opacity: 1;
+    }
+
+    &::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: $text-input;
+      font-weight: 600;
+      opacity: 1;
+    }
+
+    &:-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: $text-input;
+      font-weight: 600;
+    }
+
+    &::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: $text-input;
+      font-weight: 600;
+    }
+
+    &::placeholder {
+      /* Most modern browsers support this now. */
+      color: $text-input;
+      font-weight: 600;
+    }
   }
 
   .all-information {
@@ -116,11 +162,11 @@ body {
       text-decoration: none !important;
 
       .new-card {
-        min-height: 607px;
+        min-height: 577px;
         border: none;
 
         .card-header {
-          background: $back-card;
+          background: $header-card;
 
           .text-title {
             font-size: 0.9rem;
@@ -134,23 +180,6 @@ body {
           }
         }
 
-       /*  .watch {
-          position: absolute;
-          margin: 0 auto;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          top: 0;
-          bottom: 106px;
-          left: 0;
-          right: 0;
-          z-index: 1;
-
-          &.hidden {
-            overflow: hidden;
-          }
-        } */
-
         .card-body {
           position: relative;
           background: $back-card;
@@ -161,7 +190,7 @@ body {
           background-size: cover;
 
           img {
-            height: 360px !important;
+            height: 360px;
 
             &:hover {
               position: relative;
@@ -179,17 +208,21 @@ body {
           background: $back-card;
           color: $white;
           text-decoration: none;
+          line-height: 64%;
 
           .year-type {
             font-weight: 900;
             letter-spacing: 0.5px;
-            border-bottom: 3px solid #e12b5f !important;
             font-size: 0.9rem;
             text-transform: uppercase;
-            width: 42px !important;
+            border-bottom: 3px solid $border-bottom !important;
+            width: 42px;
             font-weight: 700;
-            width: 38px;
             border-bottom: none;
+
+            &:hover {
+              color: #ff90af;
+            }
           }
         }
 
@@ -210,7 +243,6 @@ body {
 }
 
 /* Styles Detail Movie */
-
 .bg-card {
   border: 1px solid #b95d5d;
   max-width: 100%;
@@ -282,9 +314,57 @@ body {
   }
 }
 
+
 /* Media Queries */
+@media (max-width: 767px) {
+  .all-information {
+    width: 100% !important;
+
+    img {
+      height: auto !important;
+      width: 100% !important;
+    }
+  }
+
+  .bg-card {
+    margin-bottom: 5rem;
+
+    .ng-body {
+      div {
+        flex-wrap: wrap-reverse !important;
+
+        .w-75 {
+          margin-bottom: 2rem;
+        }
+      }
+
+      .wrapper-image {
+        width: 100% !important;
+        margin-bottom: 2rem;
+      }
+
+      .detail-image img {
+        width: auto !important;
+      }
+
+      .ng-button {
+        width: 100%;
+      }
+    }
+  }
+
+  .welcome-image {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
 @media (max-width: 599px) {
   .my-nav {
     height: 100px !important;
+  }
+
+  .container-nav .fa-film {
+    font-size: 2.5rem !important;
   }
 }

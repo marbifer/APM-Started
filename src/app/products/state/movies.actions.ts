@@ -6,6 +6,7 @@ export enum MoviesActionTypes {
     LOAD_MOVIES = "[Movies] Load Movies",
     LOAD_MOVIES_SUCCESS = "[Movies] Load Movies Success",
     LOAD_MOVIES_FAIL = "[Movies] Load Movies Fail",
+    
   }
   
   export class LoadMovies implements Action {

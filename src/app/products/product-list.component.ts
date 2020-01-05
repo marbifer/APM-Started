@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 
 import { Movie, MoviesList } from "./product";
 import { ProductService } from "./product.service";
-
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { Subscription } from "rxjs";
 import { Store, select  } from "@ngrx/store";
