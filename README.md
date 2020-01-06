@@ -1,4 +1,4 @@
-# APM
+# Movies app
 
 1- Select master Branch
 2- NPM I
