@@ -1,4 +1,4 @@
-<span class="fa fa-spinner spinner" *ngIf="loading"></span>
+<span class="fa fa-spinner spinner" *ngIf="(moviesLoading$ | async)"></span>
 
 <div class="panel panel-primary">
   <div class="panel-heading my-4 my-text-warning">
@@ -18,14 +18,14 @@
         />
       </div>
 
-      <span class="d-flex align-self-start badge my-badge-warning text-white p-2">
+      <span *ngIf="(movies$ | async)?.Response === 'True' && (movies$ | async)?.Search" class="d-flex align-self-start badge my-badge-warning text-white p-2">
         Filtered by: {{ movieSearched }}
       </span>
     </div>
 
     <!-- List Movies -->
-    <div class="w-100 d-flex flex-row justify-content-between flex-wrap mb-5" *ngIf="filteredMovies">
-      <div class="d-flex flex-column all-information justify-content-between mb-5" *ngFor="let movies of filteredMovies">
+    <div class="w-100 d-flex flex-row justify-content-between flex-wrap mb-5" *ngIf="(movies$ | async)?.Search">
+      <div class="d-flex flex-column all-information justify-content-between mb-5" *ngFor="let movies of (movies$ | async)?.Search">
 
         <a class="wrapper-card text-title" [routerLink]="['/movies-list/detail', movies.imdbID, movieSearched]">
           <div class="card mb-3 new-card">
@@ -59,10 +59,24 @@
 
 </div>
 
-<div *ngIf="errorMessage" class="alert alert-dismissible alert-danger text-white">
-  <button type="button" class="close" (click)="errorMessage = null" data-dismiss="alert">&times;</button>
+<div *ngIf="(movies$ | async)?.Response === 'False' "  class="alert alert-dismissible alert-danger text-white">
+
     <div class="d-flex align-items-center">
       <i class="fas fa-exclamation-circle logo-error mr-3"></i>
-      <strong>{{ errorMessage }} </strong>
+      <strong *ngIf="movieSearched" >{{ (movies$ | async).Error }} </strong>
+      <strong *ngIf="movieSearched === ''" >Please search a movie</strong>
+      <strong *ngIf="(moviesError$ | async)" >{{(moviesError$ | async)}}</strong>
+      
     </div>
 </div>
+
+<div *ngIf=" (moviesError$ | async)"  class="alert alert-dismissible alert-danger text-white">
+  
+    <div class="d-flex align-items-center">
+      <i class="fas fa-exclamation-circle logo-error mr-3"></i>
+     
+      <strong *ngIf="(moviesError$ | async)" >{{(moviesError$ | async)}}</strong>
+      
+    </div>
+</div>
+

@@ -1,8 +1,8 @@
-<div class="card bg-card mt-4" *ngIf='movie'>
+<div class="card bg-card mt-4" *ngIf='(movieDetail$ | async)'>
   <div class="card-header ng-header text-white">
     <div class="d-flex flex-row">
       <i class="fas fa-photo-video logo-footer mt-2 mr-2"></i>
-      <h2> Title: {{ movie.Title }}</h2>
+      <h2> Title: {{ (movieDetail$ | async)?.Title }}</h2>
     </div>
   </div>
 
@@ -13,28 +13,28 @@
           <div class="d-flex flex-row align-items-center">
             <i class="fas fa-calendar-alt mr-2"></i>
             <span class="mr-2">Year:</span>
-            <span class=""> {{ movie.Year }}</span>
+            <span class="">{{ (movieDetail$ | async)?.Year }}</span>
           </div>
         </h5>
 
         <h5 class="card-title">
           <div class="d-flex flex-row align-items-center">
             <i class="fab fa-accusoft mr-2"></i>
-            Type: {{ movie.Type }}
+            Type: {{ (movieDetail$ | async)?.Type }}
           </div>
         </h5>
 
         <blockquote class="blockquote">
           <div class="d-flex flex-row align-items-center">
             <i class="fas fa-file mr-2"></i>
-            <cite title="Source Title">Plot: {{ movie.Plot }}</cite>
+            <cite title="Source Title">Plot: {{ (movieDetail$ | async)?.Plot }}</cite>
           </div>
         </blockquote>
 
         <div class="ng-pink">
           <div class="d-flex flex-row align-items-center">
             <i class="fas fa-star mr-2"></i>
-            IMDB rating: {{ movie.imdbRating }}
+            IMDB rating: {{ (movieDetail$ | async)?.imdbRating }}
           
           </div>
         </div>
@@ -42,22 +42,22 @@
         <div class='ng-run'>
           <div class="d-flex flex-row align-items-center">
             <i class="fas fa-tape mr-2"></i>
-            Runtime: {{ movie.Runtime }}
+            Runtime: {{ (movieDetail$ | async)?.Runtime }}
           </div>
         </div>
 
         <div class='ng-text'>
           <div class="d-flex flex-row align-items-center">
             <i class="fas fa-certificate mr-2"></i>
-            Genre: {{ movie.Genre }}
+            Genre: {{ (movieDetail$ | async)?.Genre }}
           </div>
         </div>
       </div>
 
       <div class="w-25 d-flex justify-content-center wrapper-image">
         <div class='detail-image'>
-          <img class='center-block img-responsive' *ngIf="movie.Poster"  [src]='movie.Poster' (error)="movie.Poster = null" [title]='movie.Title'>
-          <img *ngIf="!movie.Poster" src="./assets/images/no-image.png" class="img-thumbnail no-image center-block"/>  
+          <img class='center-block img-responsive' *ngIf="(movieDetail$ | async)?.Poster && !hideImage"  [src]='(movieDetail$ | async)?.Poster' (error)="hideImage = true" [title]='(movieDetail$ | async)?.Title'>
+          <img *ngIf="hideImage" src="./assets/images/no-image.png" class="img-thumbnail no-image center-block"/>  
         </div>
       </div>
     </div>
